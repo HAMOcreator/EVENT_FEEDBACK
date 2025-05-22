@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hodnocení akce</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('BACK.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+    .form-box {
+      background: rgba(255, 255, 255, 0.95);
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .stars {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    .stars input {
+      display: none;
+    }
+    .stars label {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .stars label:hover {
+      transform: scale(1.2);
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #navrh-box {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h1>Hodnocení akce</h1>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <label for="jmeno">Jméno</label>
+      <input type="text" name="Jméno" id="jmeno" required>
+
+      <label for="prijmeni">Příjmení</label>
+      <input type="text" name="Příjmení" id="prijmeni" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" name="Email" id="email" required>
+
+      <label for="telefon">Telefon</label>
+      <input type="tel" name="Telefon" id="telefon" required>
+
+      <label>Jak hodnotíte akci?</label>
+      <div class="stars">
+        <label><input type="radio" name="Hodnocení" value="1">⭐</label>
+        <label><input type="radio" name="Hodnocení" value="2">⭐⭐</label>
+        <label><input type="radio" name="Hodnocení" value="3">⭐⭐⭐</label>
+        <label><input type="radio" name="Hodnocení" value="4">⭐⭐⭐⭐</label>
+        <label><input type="radio" name="Hodnocení" value="5">⭐⭐⭐⭐⭐</label>
+      </div>
+
+      <label>Chcete navrhnout zlepšení?</label>
+      <select name="Navrh" onchange="toggleNavrh(this.value)">
+        <option value="Ne">Ne</option>
+        <option value="Ano">Ano</option>
+      </select>
+
+      <div id="navrh-box">
+        <label for="zlepseni">Váš návrh</label>
+        <textarea name="Zlepšení" rows="4"></textarea>
+      </div>
+
+      <button type="submit">Odeslat hodnocení</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleNavrh(value) {
+      const box = document.getElementById('navrh-box');
+      box.style.display = value === 'Ano' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
