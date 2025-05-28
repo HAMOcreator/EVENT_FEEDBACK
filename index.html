@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hodnocení akce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -88,6 +89,7 @@
 
     .thank-you {
       display: none;
+      font-family: 'Luckiest Guy', cursive;
       font-size: 1.6rem;
       font-weight: bold;
       color: white;
@@ -98,6 +100,21 @@
          1px  1px 0 #000;
       line-height: 1.4;
       padding: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid white;
+      animation: typewriter 4s steps(45) 1s 1 normal both,
+                 blinkTextCursor 750ms steps(45) infinite;
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blinkTextCursor {
+      from { border-right-color: white; }
+      to { border-right-color: transparent; }
     }
 
     @media (max-width: 480px) {
@@ -105,9 +122,11 @@
         padding: 20px;
         margin: 30px 10px;
       }
+
       .stars {
         font-size: 26px;
       }
+
       .thank-you {
         font-size: 1.3rem;
       }
@@ -153,9 +172,9 @@
 
       <button type="submit">Odeslat hodnocení</button>
     </form>
+
     <div class="thank-you" id="thankYouMessage">
-      Děkujeme za zpětnou vazbu,<br>
-      těšíme se na příště 🍹🍔🌭🥤
+      Díky za zpětnou vazbu, poučíme se … 🍔🍹🥤
     </div>
   </div>
 
@@ -165,7 +184,6 @@
       box.style.display = value === 'Ano' ? 'block' : 'none';
     }
 
-    // Hvězdičkové hodnocení logika
     const stars = document.querySelectorAll('.star');
     const ratingValue = document.getElementById('ratingValue');
 
